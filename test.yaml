@@ -3,7 +3,7 @@ kind: Deployment
 metadata:
   name: test-custom-scheduler
 spec:
-  replicas: 10
+  replicas: 1
   selector:
     matchLabels:
       app: test-custom-scheduler

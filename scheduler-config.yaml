@@ -45,5 +45,5 @@ data:
                 weight: 3
 
     leaderElection:
-      leaderElect: false
-      # resourceName: most-allocated-scheduler
+      leaderElect: true
+      resourceName: most-allocated-scheduler
