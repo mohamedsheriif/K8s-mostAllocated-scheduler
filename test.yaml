@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: test-custom-scheduler
+spec:
+  replicas: 10
+  selector:
+    matchLabels:
+      app: test-custom-scheduler
+  template:
+    metadata:
+      labels:
+        app: test-custom-scheduler
+    spec:
+      schedulerName: custom-scheduler
+      containers:
+      - name: test-custom-scheduler
+        image: busybox:latest
+        command: ["sh", "-c", "sleep 3600"]
+        resources:
+          requests:
+            memory: "1000Mi"
+          limits:
+            memory: "1000Mi"

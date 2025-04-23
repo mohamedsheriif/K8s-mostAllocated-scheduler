@@ -1,0 +1,49 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: custom-scheduler-config
+  namespace: kube-system
+data:
+  scheduler-config.yaml: |
+    apiVersion: kubescheduler.config.k8s.io/v1
+    kind: KubeSchedulerConfiguration
+    profiles:
+      - schedulerName: custom-scheduler
+        pluginConfig:
+          - name: NodeResourcesFit
+            args:
+              scoringStrategy:
+                type: MostAllocated
+                resources:
+                  - name: memory
+                    weight: 2
+                  - name: cpu
+                    weight: 1
+        plugins:
+          queueSort:
+            enabled:
+              - name: PrioritySort
+          bind:
+            enabled:
+              - name: DefaultBinder
+          filter:
+            enabled:
+              - name: NodeResourcesFit
+              - name: NodeUnschedulable
+              - name: NodeName
+              - name: TaintToleration
+              - name: NodeAffinity
+              - name: VolumeBinding
+              - name: NodePorts
+              - name: InterPodAffinity
+
+          score:
+            enabled:
+              - name: NodeResourcesFit
+                weight: 10
+              - name : NodeResourcesBalancedAllocation
+                weight: 3
+
+    leaderElection:
+      leaderElect: false
+      # resourceName: most-allocated-scheduler
