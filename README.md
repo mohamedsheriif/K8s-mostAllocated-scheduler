@@ -41,13 +41,3 @@ This project demonstrates how to deploy a **custom Kubernetes scheduler** using 
 3. **RBAC:**
    - ServiceAccount `my-scheduler` with all necessary ClusterRoleBindings.
    - Permissions for volume scheduling and leader election leases.
-
-4. **Testing:**
-   - Test deployment scheduled using `schedulerName: custom-scheduler`.
-
-## 🧪 How to Test
-
-1. Apply RBAC and ConfigMap:
-   ```bash
-   kubectl apply -f rbac.yaml
-   kubectl apply -f custom-scheduler-config.yaml
