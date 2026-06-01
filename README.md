@@ -2,33 +2,33 @@
 
 This project demonstrates how to deploy a **custom Kubernetes scheduler** using the `MostAllocated` strategy on **Azure Kubernetes Service (AKS)**. It overrides the default scheduling behavior to prioritize nodes with higher resource utilization, optimizing workload packing and potentially reducing costs.
 
-## 🚀 Purpose
+## Purpose
 
 - Replace the default Kubernetes scheduler with one using the **MostAllocated** strategy.
 - Improve resource efficiency in AKS by packing pods onto nodes with higher utilization.
 - Learn how to configure a custom scheduler, permissions, and testing strategy.
 
-## 🔧 Key Features
+##  Key Features
 
 - Custom scheduler configuration using `NodeResourcesFit` with `MostAllocated` scoring.
 - Role-based access control (RBAC) setup for secure scheduler deployment.
 - Configurable deployment and multi-replica scheduler for HA testing.
 - Sample pod deployment to validate the custom scheduler behavior.
 
-## 📁 Project Structure
+## Project Structure
 
 - `custom-scheduler-config.yaml`: ConfigMap with the scheduler configuration.
 - `custom-scheduler-deployment.yaml`: Deployment manifest for the custom scheduler.
 - `rbac.yaml`: Complete RBAC setup (ServiceAccount, RoleBindings, ClusterRoleBindings).
 - `test-deployment.yaml`: A test pod using the `custom-scheduler`.
 
-## 📦 Technologies
+## Technologies
 
 - Kubernetes (v1.31+)
 - Azure AKS
 - MostAllocated Scheduling Strategy
 
-## 🛠️ How It Works
+## How It Works
 
 1. **Scheduler Configuration:**
    - Uses `NodeResourcesFit` plugin with `MostAllocated` strategy.
